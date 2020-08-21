@@ -1,7 +1,7 @@
 package com.github.khousehold.oink.commons.reflection
 
-import io.kotlintest.shouldBe
-import io.kotlintest.specs.StringSpec
+import io.kotest.core.spec.style.StringSpec
+import io.kotest.matchers.shouldBe
 import java.math.BigDecimal
 import java.math.BigInteger
 import kotlin.reflect.full.memberProperties

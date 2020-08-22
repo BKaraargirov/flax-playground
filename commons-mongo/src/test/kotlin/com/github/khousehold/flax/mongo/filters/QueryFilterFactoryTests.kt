@@ -15,13 +15,13 @@ import org.springframework.data.mongodb.core.query.Query
 
 class QueryFilterFactoryTests: StringSpec({
   class TestClass(
-      propOne: Int,
-      propTwo: Int
+      val propOne: Int,
+      val propTwo: Int
   )
 
   val discoveryService = DiscoveryService()
   val clsRestriction = discoveryService.getFilterableFields(TestClass::class)
-  val mapping = mapOf(ClassUtils.getClassName(TestClass::class) to clsRestriction)
+  val mapping = mapOf(ClassUtils.getClassName(TestClass::class).toLowerCase() to clsRestriction)
   val filterValidator = FilterValidator(mapping, DefaultFilterRestrictions.RESTRICTIONS)
   val filterFactory = QueryFilterFactory(filterValidator, ClassUtils)
 

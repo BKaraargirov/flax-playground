@@ -2,11 +2,7 @@ plugins {
     id "org.jetbrains.kotlin.jvm" version "1.4.0"
 }
 
-
-ext {
-    kotestVersion = '4.2.0'
-}
-
+// Compile main and test sources to java XX
 tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile).all {
     kotlinOptions {
         jvmTarget = "11"
@@ -18,8 +14,8 @@ test {
 }
 
 dependencies {
-    compile group: 'org.jetbrains.kotlin', name: 'kotlin-stdlib', version: '1.4.0'
-    compile group: 'org.jetbrains.kotlin', name: 'kotlin-reflect', version: '1.4.0'
+    compile group: 'org.jetbrains.kotlin', name: 'kotlin-stdlib', version: kotlinVersion
+    compile group: 'org.jetbrains.kotlin', name: 'kotlin-reflect', version: kotlinVersion
 
     testImplementation group: 'io.kotest', name:'kotest-runner-junit5-jvm', version: kotestVersion
     testImplementation group: 'io.kotest', name: 'kotest-assertions-core-jvm', version: kotestVersion

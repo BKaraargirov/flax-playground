@@ -1,5 +1,6 @@
 plugins {
     id 'java'
+
 }
 
 group 'org.example'
@@ -9,7 +10,21 @@ allprojects {
     repositories {
         mavenCentral()
     }
+
+    ext {
+        // All dependency version
+        springVersion = '2.3.3.RELEASE'
+
+        // Kotlin related dependency versions
+        kotestVersion = '4.2.0'
+        kotlinVersion = '1.4.0'
+
+        // Java-only related dependency version
+        lombokVersion = '1.18.12'
+    }
 }
+
+
 
 dependencies {
     testCompile group: 'junit', name: 'junit', version: '4.12'

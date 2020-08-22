@@ -2,8 +2,11 @@ plugins {
     id "org.jetbrains.kotlin.jvm" version "1.4.0"
 }
 
-ext {
-    kotestVersion = '4.2.0'
+// Compile main and test sources to java XX
+tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile).all {
+    kotlinOptions {
+        jvmTarget = "11"
+    }
 }
 
 test {
@@ -11,12 +14,12 @@ test {
 }
 
 dependencies {
-    implementation group: 'org.jetbrains.kotlin', name: 'kotlin-stdlib', version: '1.4.0'
-    implementation group: 'org.jetbrains.kotlin', name: 'kotlin-reflect', version: '1.4.0'
+    implementation group: 'org.jetbrains.kotlin', name: 'kotlin-stdlib', version: kotlinVersion
+    implementation group: 'org.jetbrains.kotlin', name: 'kotlin-reflect', version: kotlinVersion
 
     implementation project(':commons')
 
-    implementation group: 'org.springframework.boot', name: 'spring-boot-starter-data-mongodb-reactive', version: '2.3.3.RELEASE'
+    implementation group: 'org.springframework.boot', name: 'spring-boot-starter-data-mongodb-reactive', version: springVersion
 
 
     testImplementation group: 'io.kotest', name:'kotest-runner-junit5-jvm', version: kotestVersion

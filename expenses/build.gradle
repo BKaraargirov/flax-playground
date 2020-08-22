@@ -7,16 +7,16 @@ test {
 }
 
 dependencies {
-    compile group: 'org.springframework.boot', name: 'spring-boot-starter-web', version: '2.3.3.RELEASE'
-    compileOnly 'org.projectlombok:lombok:1.18.12'
-    annotationProcessor 'org.projectlombok:lombok:1.18.12'
+    compile group: 'org.springframework.boot', name: 'spring-boot-starter-web', version: springVersion
+    compileOnly group: 'org.projectlombok', name: 'lombok', version: lombokVersion
+    annotationProcessor group:'org.projectlombok', name: 'lombok', version: lombokVersion
 
-    implementation group: 'org.springframework.boot', name: 'spring-boot-starter-data-mongodb-reactive', version: '2.3.3.RELEASE'
+    implementation group: 'org.springframework.boot', name: 'spring-boot-starter-data-mongodb-reactive', version: springVersion
 
     implementation project(':commons')
     implementation project(':commons-mongo')
 
-    testCompile group: 'org.springframework.boot', name: 'spring-boot-starter-test', version: '2.3.3.RELEASE'
-    testCompileOnly 'org.projectlombok:lombok:1.18.12'
-    testAnnotationProcessor 'org.projectlombok:lombok:1.18.12'
+    testCompile group: 'org.springframework.boot', name: 'spring-boot-starter-test', version: springVersion
+    testCompileOnly group: 'org.projectlombok', name: 'lombok', version: lombokVersion
+    testAnnotationProcessor group: 'org.projectlombok', name: 'lombok', version: lombokVersion
 }

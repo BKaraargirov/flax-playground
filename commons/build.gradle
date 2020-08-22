@@ -2,8 +2,15 @@ plugins {
     id "org.jetbrains.kotlin.jvm" version "1.4.0"
 }
 
+
 ext {
     kotestVersion = '4.2.0'
+}
+
+tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile).all {
+    kotlinOptions {
+        jvmTarget = "11"
+    }
 }
 
 test {

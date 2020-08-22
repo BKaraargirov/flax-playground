@@ -6,9 +6,10 @@ import com.github.khousehold.oink.commons.filters.models.Filter
 import com.github.khousehold.oink.commons.filters.models.FilterOperation
 import com.github.khousehold.oink.commons.filters.models.LogicalFilter
 import com.github.khousehold.oink.commons.filters.models.LogicalFilterType
+import com.github.khousehold.oink.commons.reflection.ClassUtils
 import com.github.khousehold.oink.commons.services.DiscoveryService
-import io.kotlintest.matchers.shouldEqual
-import io.kotlintest.specs.StringSpec
+import io.kotest.core.spec.style.StringSpec
+import io.kotest.matchers.shouldBe
 import org.springframework.data.mongodb.core.query.Criteria
 import org.springframework.data.mongodb.core.query.Query
 
@@ -20,9 +21,9 @@ class QueryFilterFactoryTests: StringSpec({
 
   val discoveryService = DiscoveryService()
   val clsRestriction = discoveryService.getFilterableFields(TestClass::class)
-  val mapping = mapOf(TestClass::class.qualifiedName!! to clsRestriction)
+  val mapping = mapOf(ClassUtils.getClassName(TestClass::class) to clsRestriction)
   val filterValidator = FilterValidator(mapping, DefaultFilterRestrictions.RESTRICTIONS)
-  val filterFactory = QueryFilterFactory(filterValidator)
+  val filterFactory = QueryFilterFactory(filterValidator, ClassUtils)
 
   "creating filter with AND and 2 integers" {
     val filters = LogicalFilter(
@@ -50,6 +51,6 @@ class QueryFilterFactoryTests: StringSpec({
 
     val actualResult = filterFactory.transformFilters(filters, TestClass::class)
 
-    actualResult shouldEqual expectedResult
+    actualResult shouldBe expectedResult
   }
 })

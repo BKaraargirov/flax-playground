@@ -11,12 +11,12 @@ test {
 }
 
 dependencies {
-    compile group: 'org.jetbrains.kotlin', name: 'kotlin-stdlib', version: '1.4.0'
-    compile group: 'org.jetbrains.kotlin', name: 'kotlin-reflect', version: '1.4.0'
+    implementation group: 'org.jetbrains.kotlin', name: 'kotlin-stdlib', version: '1.4.0'
+    implementation group: 'org.jetbrains.kotlin', name: 'kotlin-reflect', version: '1.4.0'
 
     implementation project(':commons')
 
-    compile group: 'org.springframework.boot', name: 'spring-boot-starter-data-mongodb-reactive', version: '2.3.3.RELEASE'
+    implementation group: 'org.springframework.boot', name: 'spring-boot-starter-data-mongodb-reactive', version: '2.3.3.RELEASE'
 
 
     testImplementation group: 'io.kotest', name:'kotest-runner-junit5-jvm', version: kotestVersion

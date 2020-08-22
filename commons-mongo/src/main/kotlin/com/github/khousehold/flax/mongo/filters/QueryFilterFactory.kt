@@ -5,18 +5,20 @@ import com.github.khousehold.oink.commons.filters.FilterFactory
 import com.github.khousehold.oink.commons.filters.FilterValidator
 import com.github.khousehold.oink.commons.filters.errors.FilterValidationErrorFactory
 import com.github.khousehold.oink.commons.filters.models.*
+import com.github.khousehold.oink.commons.reflection.ClassUtils
 import com.mongodb.client.model.Filters
 import org.springframework.data.mongodb.core.query.Criteria
 import org.springframework.data.mongodb.core.query.Query
 import kotlin.reflect.KClass
 
 class QueryFilterFactory(
-    private val filterValidator: FilterValidator
+    private val filterValidator: FilterValidator,
+    private val classUtils: ClassUtils
 ) : FilterFactory<Query> {
   override fun transformFilters(
       filters: IFilter, targetClass: KClass<*>
   ): Query {
-    val validations = filterValidator.validate(targetClass.qualifiedName!!.toLowerCase(), filters)
+    val validations = filterValidator.validate(classUtils.getClassName(targetClass).toLowerCase(), filters)
 
     ErrorHandlingUtils.throwIfInvalid(validations, FilterValidationErrorFactory())
     val query = Query()

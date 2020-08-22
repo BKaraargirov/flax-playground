@@ -1,5 +1,6 @@
 package com.github.khousehold.oink.commons.filters.models
 
+import com.github.khousehold.oink.commons.reflection.ClassUtils
 import kotlin.reflect.KClass
 import kotlin.reflect.KType
 
@@ -14,8 +15,10 @@ data class ClassRestrictions(
         val filterableProperties: Map<String, KType>
 ) {
     init {
-        assert(classInfo.qualifiedName != null) { "Class \"${classInfo}\" qualified name is missing" }
+        assert(classInfo.qualifiedName != null && classInfo.simpleName == null) {
+            "Class \"${classInfo}\" qualified and simple name are missing. Anonymous classes are not supported" }
     }
 
-    val className: String = classInfo.qualifiedName!! // You have it in the info, but for ease of use
+    val className: String = ClassUtils.getClassName(classInfo) // You have it in the info, but for ease of use
 }
+

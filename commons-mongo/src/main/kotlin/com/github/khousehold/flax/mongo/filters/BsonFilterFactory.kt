@@ -5,17 +5,19 @@ import com.github.khousehold.oink.commons.filters.FilterFactory
 import com.github.khousehold.oink.commons.filters.FilterValidator
 import com.github.khousehold.oink.commons.filters.errors.FilterValidationErrorFactory
 import com.github.khousehold.oink.commons.filters.models.*
+import com.github.khousehold.oink.commons.reflection.ClassUtils
 import com.mongodb.client.model.Filters
 import org.bson.conversions.Bson
 import kotlin.reflect.KClass
 
 class BsonFilterFactory(
-  private val filterValidator: FilterValidator
+  private val filterValidator: FilterValidator,
+  private val classUtils: ClassUtils
 ) : FilterFactory<Bson> {
   override fun transformFilters(
       filters: IFilter, targetClass: KClass<*>
   ): Bson {
-    val validations = filterValidator.validate(targetClass.qualifiedName!!.toLowerCase(), filters)
+    val validations = filterValidator.validate(classUtils.getClassName(targetClass).toLowerCase(), filters)
 
     ErrorHandlingUtils.throwIfInvalid(validations, FilterValidationErrorFactory())
 

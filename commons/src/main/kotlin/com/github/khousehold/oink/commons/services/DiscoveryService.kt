@@ -1,8 +1,10 @@
 package com.github.khousehold.oink.commons.services
 
 
+import com.github.khousehold.oink.commons.filters.annotations.Filterable
 import com.github.khousehold.oink.commons.filters.annotations.NotFilterable
 import com.github.khousehold.oink.commons.filters.models.ClassRestrictions
+import io.github.classgraph.ClassGraph
 import kotlin.reflect.KClass
 import kotlin.reflect.KVisibility
 import kotlin.reflect.jvm.kotlinProperty
@@ -12,23 +14,23 @@ import kotlin.reflect.jvm.kotlinProperty
  */
 class DiscoveryService {
 
-//    /**
-//     * Scan a class path to find all classes marked with @Filterable
-//     */
-//    fun findFilterables(pkgName: String): List<KClass<*>> {
-//        val filterableAnnotation = Filterable::class.qualifiedName
-//
-//        //TODO: change to own implementation since this is the only place where the dependency is used
-//        return ClassGraph()
-//                .enableAllInfo()
-//                .whitelistPackages(pkgName)
-//                .scan()
-//                .use{ scanResult ->
-//                    scanResult
-//                            .getClassesWithAnnotation(filterableAnnotation)
-//                            .loadClasses().map { it.kotlin }
-//                }
-//    }
+    /**
+     * Scan a class path to find all classes marked with @Filterable
+     */
+    fun findFilterables(pkgName: String): List<KClass<*>> {
+        val filterableAnnotation = Filterable::class.qualifiedName
+
+        //TODO: change to own implementation since this is the only place where the dependency is used
+        return ClassGraph()
+                .enableAllInfo()
+                .acceptPackages(pkgName)
+                .scan()
+                .use{ scanResult ->
+                    scanResult
+                            .getClassesWithAnnotation(filterableAnnotation)
+                            .loadClasses().map { it.kotlin }
+                }
+    }
 
     /**
      * Create a mapping of all fields of a given class that can be used as a filter.

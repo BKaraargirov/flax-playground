@@ -7,10 +7,10 @@ test {
 }
 
 dependencies {
-    compile group: 'org.springframework.boot', name: 'spring-boot-starter-web', version: springVersion
     compileOnly group: 'org.projectlombok', name: 'lombok', version: lombokVersion
     annotationProcessor group:'org.projectlombok', name: 'lombok', version: lombokVersion
 
+    compile group: 'org.springframework.boot', name: 'spring-boot-starter-webflux', version: springVersion
     implementation group: 'org.springframework.boot', name: 'spring-boot-starter-data-mongodb-reactive', version: springVersion
 
     implementation project(':commons')

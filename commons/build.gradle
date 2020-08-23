@@ -9,6 +9,10 @@ tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile).all {
     }
 }
 
+ext {
+    glassGraphVersion = '4.8.87'
+}
+
 test {
     useJUnitPlatform()
 }
@@ -16,6 +20,8 @@ test {
 dependencies {
     compile group: 'org.jetbrains.kotlin', name: 'kotlin-stdlib', version: kotlinVersion
     compile group: 'org.jetbrains.kotlin', name: 'kotlin-reflect', version: kotlinVersion
+
+    compile group: 'io.github.classgraph', name: 'classgraph', version: glassGraphVersion
 
     testImplementation group: 'io.kotest', name:'kotest-runner-junit5-jvm', version: kotestVersion
     testImplementation group: 'io.kotest', name: 'kotest-assertions-core-jvm', version: kotestVersion

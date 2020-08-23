@@ -13,9 +13,8 @@ import reactor.core.publisher.Flux;
 @RequiredArgsConstructor
 public class ExpenseService {
   private final ExpenseRepository expenseRepository;
-  private final BsonFilterFactory bsonFilterFactory;
 
   public Flux<Expense> getExpenses(IFilter filter) {
-    return null;
+    return this.expenseRepository.findExpenses(filter);
   }
 }

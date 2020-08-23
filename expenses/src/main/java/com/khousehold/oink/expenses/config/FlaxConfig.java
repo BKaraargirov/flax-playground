@@ -1,5 +1,6 @@
 package com.khousehold.oink.expenses.config;
 
+import com.fasterxml.jackson.databind.module.SimpleModule;
 import com.github.khousehold.flax.mongo.filters.QueryFilterFactory;
 import com.github.khousehold.oink.commons.filters.DefaultFilterRestrictions;
 import com.github.khousehold.oink.commons.filters.FilterFactory;
@@ -20,6 +21,13 @@ import java.util.stream.Collectors;
 @Configuration
 public class FlaxConfig {
   private final String searchPath = "com.khousehold.oink.expenses";
+
+  @Bean
+  public Module dynamoDemoEntityDeserializer() {
+    SimpleModule module = new SimpleModule();
+    module.addDeserializer(IFilter.class, new IFilterDeserializer());
+    return module;
+  }
 
   @Bean
   public FilterFactory<Query> queryFilterFactory(FilterValidator filterValidator, ClassUtils classUtils) {

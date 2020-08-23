@@ -1,6 +1,5 @@
 package com.khousehold.oink.expenses.controllers;
 
-import com.github.khousehold.oink.commons.filters.models.IFilter;
 import com.khousehold.oink.expenses.contracts.NewExpenseRequest;
 import com.khousehold.oink.expenses.models.Expense;
 import com.khousehold.oink.expenses.services.ExpenseService;

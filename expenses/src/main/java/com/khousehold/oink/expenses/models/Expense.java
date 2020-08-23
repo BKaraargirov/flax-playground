@@ -5,6 +5,7 @@ import lombok.Data;
 import org.springframework.data.annotation.Id;
 
 import java.math.BigDecimal;
+import java.util.UUID;
 
 @Filterable
 @Data
@@ -14,4 +15,17 @@ public class Expense {
   private final String name;
   private final String category;
   private final BigDecimal price;
+
+  /**
+   * Return a copy of the expense with a generated id.
+   * @return
+   */
+  public Expense generateId() {
+    return new Expense(
+            UUID.randomUUID().toString(),
+            this.name,
+            this.category,
+            this.price
+    );
+  }
 }

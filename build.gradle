@@ -14,6 +14,7 @@ allprojects {
     ext {
         // All dependency version
         springVersion = '2.3.3.RELEASE'
+        jacksonVersion = '2.11.2'
 
         // Kotlin related dependency versions
         kotestVersion = '4.2.0'

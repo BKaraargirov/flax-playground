@@ -5,7 +5,9 @@ import com.github.khousehold.oink.commons.filters.annotations.Filterable
 import com.github.khousehold.oink.commons.filters.annotations.NotFilterable
 import com.github.khousehold.oink.commons.filters.models.ClassRestrictions
 import io.github.classgraph.ClassGraph
+import java.lang.reflect.Field
 import kotlin.reflect.KClass
+import kotlin.reflect.KProperty
 import kotlin.reflect.KVisibility
 import kotlin.reflect.jvm.kotlinProperty
 
@@ -37,6 +39,11 @@ class DiscoveryService {
      * All fields which are market as @NotFilterable or are non public are ignored.
      */
     fun getFilterableFields(classInfo: KClass<*>): ClassRestrictions {
+      val methods = classInfo.java.declaredMethods.map { method -> method.name }
+      fun hasGetter(field: KProperty<*>): Boolean =
+          methods.any { it.toLowerCase().contains(field.name.toLowerCase()) }
+
+
          val filterableProperties =  classInfo.java.declaredFields
                 .filter { property ->
                     val isFilterable = property.annotations
@@ -45,7 +52,7 @@ class DiscoveryService {
                             }
                     isFilterable
                 }.map { it.kotlinProperty }
-                 .filter { p -> p != null }
+                 .filter { p -> p != null && (p.visibility == KVisibility.PUBLIC || hasGetter(p)) }
                  .map { property -> Pair(property!!.name, property.returnType) }
                  .toMap()
 

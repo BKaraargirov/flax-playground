@@ -19,7 +19,7 @@ class QueryFilterFactoryTests: StringSpec({
       val propTwo: Int
   )
 
-  val discoveryService = DiscoveryService()
+  val discoveryService = DiscoveryService(ClassUtils)
   val clsRestriction = discoveryService.getFilterableFields(TestClass::class)
   val mapping = mapOf(ClassUtils.getClassName(TestClass::class).toLowerCase() to clsRestriction)
   val filterValidator = FilterValidator(mapping, DefaultFilterRestrictions.RESTRICTIONS)

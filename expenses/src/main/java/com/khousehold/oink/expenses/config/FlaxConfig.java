@@ -60,8 +60,8 @@ public class FlaxConfig {
   }
 
   @Bean
-  public DiscoveryService discoveryService() {
-    return new DiscoveryService();
+  public DiscoveryService discoveryService(ClassUtils classUtils) {
+    return new DiscoveryService(classUtils);
   }
 
   @Bean

@@ -45,7 +45,7 @@ class DiscoveryService {
                             }
                     isFilterable
                 }.map { it.kotlinProperty }
-                 .filter { p -> p != null && p.visibility == KVisibility.PUBLIC }
+                 .filter { p -> p != null }
                  .map { property -> Pair(property!!.name, property.returnType) }
                  .toMap()
 

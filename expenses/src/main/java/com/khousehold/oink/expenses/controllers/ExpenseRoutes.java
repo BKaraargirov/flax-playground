@@ -1,5 +1,6 @@
 package com.khousehold.oink.expenses.controllers;
 
+import com.github.khousehold.oink.commons.filters.models.IFilter;
 import com.khousehold.oink.expenses.contracts.NewExpenseRequest;
 import com.khousehold.oink.expenses.models.Expense;
 import com.khousehold.oink.expenses.services.ExpenseService;
@@ -32,7 +33,7 @@ public class ExpenseRoutes {
             .contentType(MediaType.APPLICATION_JSON)
             .body(request.body(BodyExtractors
                 .toMono(IFilter.class))
-                .map(expenseService::getExpenses),
+                .flatMapMany(expenseService::getExpenses),
                 Expense.class
             ))
         .build();

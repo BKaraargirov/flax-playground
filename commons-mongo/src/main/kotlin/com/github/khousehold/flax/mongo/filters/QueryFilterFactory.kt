@@ -18,7 +18,7 @@ class QueryFilterFactory(
   override fun transformFilters(
       filters: IFilter, targetClass: KClass<*>
   ): Query {
-    val validations = filterValidator.validate(classUtils.getClassName(targetClass).toLowerCase(), filters)
+    val validations = filterValidator.validate(classUtils.getClassName(targetClass), filters)
 
     ErrorHandlingUtils.throwIfInvalid(validations, FilterValidationErrorFactory())
     val query = Query()

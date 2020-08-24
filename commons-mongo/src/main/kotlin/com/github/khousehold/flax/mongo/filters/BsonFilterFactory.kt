@@ -17,7 +17,7 @@ class BsonFilterFactory(
   override fun transformFilters(
       filters: IFilter, targetClass: KClass<*>
   ): Bson {
-    val validations = filterValidator.validate(classUtils.getClassName(targetClass).toLowerCase(), filters)
+    val validations = filterValidator.validate(classUtils.getClassName(targetClass), filters)
 
     ErrorHandlingUtils.throwIfInvalid(validations, FilterValidationErrorFactory())
 

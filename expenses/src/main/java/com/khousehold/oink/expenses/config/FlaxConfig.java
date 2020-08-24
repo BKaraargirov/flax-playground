@@ -7,6 +7,8 @@ import com.github.khousehold.oink.commons.filters.FilterFactory;
 import com.github.khousehold.oink.commons.filters.FilterValidator;
 import com.github.khousehold.oink.commons.filters.models.ClassRestrictions;
 import com.github.khousehold.oink.commons.filters.models.FilterRestriction;
+import com.github.khousehold.oink.commons.filters.models.IFilter;
+import com.github.khousehold.oink.commons.filters.web.IFilterDeserializer;
 import com.github.khousehold.oink.commons.reflection.ClassUtils;
 import com.github.khousehold.oink.commons.services.DiscoveryService;
 import org.springframework.context.annotation.Bean;
@@ -23,7 +25,7 @@ public class FlaxConfig {
   private final String searchPath = "com.khousehold.oink.expenses";
 
   @Bean
-  public Module dynamoDemoEntityDeserializer() {
+  public com.fasterxml.jackson.databind.Module iFilterDeserializer() {
     SimpleModule module = new SimpleModule();
     module.addDeserializer(IFilter.class, new IFilterDeserializer());
     return module;

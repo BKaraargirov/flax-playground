@@ -1,4 +1,4 @@
-package com.github.khousehold.oink.commons.filters.web
+package com.github.khousehold.flax.spring.web
 
 import com.fasterxml.jackson.core.JsonParser
 import com.fasterxml.jackson.databind.DeserializationContext
@@ -12,7 +12,7 @@ import com.github.khousehold.oink.commons.filters.models.LogicalFilter
 import com.github.khousehold.oink.commons.filters.models.LogicalFilterType
 import com.github.khousehold.oink.commons.utils.toList
 
-class IFilterDeserializer() : JsonDeserializer<IFilter>() {
+class FilterDeserializer() : JsonDeserializer<IFilter>() {
   override fun deserialize(p: JsonParser?, ctxt: DeserializationContext?): IFilter {
     val oc = p!!.codec
     val node: JsonNode = oc.readTree(p)

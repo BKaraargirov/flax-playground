@@ -19,6 +19,7 @@ dependencies {
 
     implementation project(':commons')
     implementation project(':commons-mongo')
+    implementation project(':commons-spring')
 
     testCompile group: 'org.springframework.boot', name: 'spring-boot-starter-test', version: springVersion
     testCompileOnly group: 'org.projectlombok', name: 'lombok', version: lombokVersion

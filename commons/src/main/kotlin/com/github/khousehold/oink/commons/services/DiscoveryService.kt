@@ -1,7 +1,6 @@
 package com.github.khousehold.oink.commons.services
 
 
-import com.fasterxml.jackson.databind.util.ClassUtil
 import com.github.khousehold.oink.commons.filters.annotations.Filterable
 import com.github.khousehold.oink.commons.filters.annotations.NotFilterable
 import com.github.khousehold.oink.commons.filters.models.ClassRestrictions

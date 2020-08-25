@@ -1,5 +1,6 @@
 package com.github.khousehold.oink.commons.services
 
+import com.github.khousehold.oink.commons.reflection.ClassUtils
 import com.github.khousehold.oink.commons.services.testData.NotCompletelyFilterableClass
 import io.kotest.core.spec.style.StringSpec
 import io.kotest.matchers.shouldBe
@@ -7,7 +8,7 @@ import kotlin.reflect.full.createType
 import kotlin.reflect.full.isSubclassOf
 
 class DiscoveryServiceTests: StringSpec({
-  val unitUnderTest = DiscoveryService()
+  val unitUnderTest = DiscoveryService(ClassUtils)
 
   "Filterable classes should be discovered" {
     val targetPackage = "com.github.khousehold.oink.commons.services"

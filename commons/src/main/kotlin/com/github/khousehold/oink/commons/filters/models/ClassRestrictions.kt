@@ -20,5 +20,7 @@ data class ClassRestrictions(
     }
 
     val className: String = ClassUtils.getClassName(classInfo) // You have it in the info, but for ease of use
+
+    val javaClass: Class<*> = classInfo.java
 }
 

@@ -1,6 +1,5 @@
 plugins {
-    id "org.jetbrains.kotlin.jvm" version "1.4.0"
-    id 'java'
+    id 'org.jetbrains.kotlin.jvm' version '1.4.0'
 }
 
 // Compile main and test sources to java XX
@@ -9,8 +8,6 @@ tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile).all {
         jvmTarget = "11"
     }
 }
-
-sourceCompatibility = '11'
 
 test {
     useJUnitPlatform()
@@ -22,7 +19,9 @@ dependencies {
 
     implementation project(':commons')
 
+    implementation group: 'org.springframework.boot', name: 'spring-boot-starter', version: springVersion
     implementation group: 'org.springframework.boot', name: 'spring-boot-starter-data-mongodb-reactive', version: springVersion
+    compile group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: jacksonVersion
 
 
     testImplementation group: 'io.kotest', name:'kotest-runner-junit5-jvm', version: kotestVersion

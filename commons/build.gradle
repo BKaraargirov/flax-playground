@@ -8,6 +8,12 @@ tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile).all {
         jvmTarget = "11"
     }
 }
+compileKotlin {
+    kotlinOptions {
+
+    }
+}
+
 
 ext {
     glassGraphVersion = '4.8.87'
@@ -22,7 +28,6 @@ dependencies {
     compile group: 'org.jetbrains.kotlin', name: 'kotlin-reflect', version: kotlinVersion
 
     compile group: 'io.github.classgraph', name: 'classgraph', version: glassGraphVersion
-    compile group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: jacksonVersion
 
     testImplementation group: 'io.kotest', name:'kotest-runner-junit5-jvm', version: kotestVersion
     testImplementation group: 'io.kotest', name: 'kotest-assertions-core-jvm', version: kotestVersion

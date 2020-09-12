@@ -17,7 +17,7 @@ dependencies {
     implementation group: 'org.jetbrains.kotlin', name: 'kotlin-stdlib', version: kotlinVersion
     implementation group: 'org.jetbrains.kotlin', name: 'kotlin-reflect', version: kotlinVersion
 
-    implementation project(':commons')
+    implementation project(path: ':commons', configuration: 'default')
 
     implementation group: 'org.springframework.boot', name: 'spring-boot-starter', version: springVersion
     implementation group: 'org.springframework.boot', name: 'spring-boot-starter-data-mongodb-reactive', version: springVersion

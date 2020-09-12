@@ -17,11 +17,11 @@ dependencies {
     compile group: 'org.springframework.boot', name: 'spring-boot-starter-webflux', version: springVersion
     implementation group: 'org.springframework.boot', name: 'spring-boot-starter-data-mongodb-reactive', version: springVersion
 
-    implementation project(':commons')
-    implementation project(':commons-mongo')
-    implementation project(':commons-spring')
+    implementation project(path: ':commons-mongo', configuration: 'default')
+    implementation project(path: ':commons-spring', configuration: 'default')
 
     testCompile group: 'org.springframework.boot', name: 'spring-boot-starter-test', version: springVersion
+    testCompile group: 'org.mockito', name: 'mockito-core', version: mockitoVersion
     testCompileOnly group: 'org.projectlombok', name: 'lombok', version: lombokVersion
     testAnnotationProcessor group: 'org.projectlombok', name: 'lombok', version: lombokVersion
 }

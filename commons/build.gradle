@@ -8,12 +8,6 @@ tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile).all {
         jvmTarget = "11"
     }
 }
-compileKotlin {
-    kotlinOptions {
-
-    }
-}
-
 
 ext {
     glassGraphVersion = '4.8.87'

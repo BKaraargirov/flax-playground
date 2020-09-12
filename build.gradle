@@ -22,6 +22,8 @@ allprojects {
 
         // Java-only related dependency version
         lombokVersion = '1.18.12'
+
+        mockitoVersion = '3.5.10'
     }
 }
 

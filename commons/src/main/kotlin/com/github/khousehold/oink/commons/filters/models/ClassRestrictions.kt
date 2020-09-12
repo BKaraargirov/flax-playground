@@ -15,7 +15,7 @@ data class ClassRestrictions(
         val filterableProperties: Map<String, KType>
 ) {
     init {
-        assert(classInfo.qualifiedName != null && classInfo.simpleName == null) {
+        assert(classInfo.qualifiedName != null || classInfo.simpleName != null) {
             "Class \"${classInfo}\" qualified and simple name are missing. Anonymous classes are not supported" }
     }
 

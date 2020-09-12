@@ -8,6 +8,6 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class NewExpenseRequest {
+public class UpsertExpenseRequest {
     private Expense expense;
 }

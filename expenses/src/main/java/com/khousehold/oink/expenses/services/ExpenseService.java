@@ -31,7 +31,7 @@ public class ExpenseService {
   }
 
   public Mono<Boolean> deleteExpenseById(String expenseId) {
-    return this.expenseRepository.deleteById(expenseId)
-        .map(unused -> true);
+    return this.expenseRepository.deleteCountById(expenseId)
+        .map(deletedCount -> deletedCount > 0);
   }
 }

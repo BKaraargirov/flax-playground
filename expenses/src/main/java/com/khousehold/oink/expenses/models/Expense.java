@@ -12,19 +12,13 @@ import java.util.UUID;
 @Filterable
 @Data
 @AllArgsConstructor
+@NoArgsConstructor
 public class Expense {
   @Id
-  private final String id;
-  private final String name;
-  private final String category;
-  private final BigDecimal price;
-
-  public Expense() {
-    this.id = null;
-    this.name = null;
-    this.category = null;
-    this.price = null;
-  }
+  private String id;
+  private String name;
+  private String category;
+  private BigDecimal price;
 
   /**
    * Return a copy of the expense with a generated id.

@@ -1,7 +1,6 @@
-package com.khousehold.oink.expenses.integrationTests;
+package com.khousehold.oink.expenses.controllers;
 
 import com.khousehold.oink.expenses.contracts.UpsertExpenseRequest;
-import com.khousehold.oink.expenses.controllers.ExpenseRoutes;
 import com.khousehold.oink.expenses.models.Expense;
 import com.khousehold.oink.expenses.repositories.ExpenseRepository;
 import com.khousehold.oink.expenses.services.ExpenseService;
@@ -27,7 +26,7 @@ import static org.mockito.Mockito.when;
 @RunWith(SpringRunner.class)
 @ContextConfiguration(classes = {ExpenseRoutes.class, ExpenseService.class})
 @WebFluxTest
-public class ExpensesIT {
+public class ExpensesControllerTest {
   @Autowired
   private ApplicationContext context;
 

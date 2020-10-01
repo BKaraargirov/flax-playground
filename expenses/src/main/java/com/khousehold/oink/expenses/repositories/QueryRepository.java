@@ -5,5 +5,5 @@ import com.khousehold.oink.expenses.models.Expense;
 import reactor.core.publisher.Flux;
 
 public interface QueryRepository<T> {
-  Flux<T> findExpenses(IFilter filter);
+  Flux<T> find(IFilter filter);
 }

@@ -10,6 +10,7 @@ import org.springframework.data.mongodb.core.ReactiveMongoTemplate;
 import org.springframework.data.mongodb.core.query.Query;
 import reactor.core.publisher.Flux;
 
+//TODO: Make generic and/or generated at start up. Other potential idea could be to extend the spring repository itslef
 public class ExpenseQueryRepositoryImpl implements ExpenseQueryRepository {
   private final FilterFactory<Query> filterFactory;
   private final ReactiveMongoTemplate template;
@@ -21,7 +22,7 @@ public class ExpenseQueryRepositoryImpl implements ExpenseQueryRepository {
   }
 
   @Override
-  public Flux<Expense> findExpenses(IFilter filter) {
+  public Flux<Expense> find(IFilter filter) {
     var documentFilter = filterFactory.transformFilters(filter, Expense.class);
     return template.find(documentFilter, Expense.class);
   }

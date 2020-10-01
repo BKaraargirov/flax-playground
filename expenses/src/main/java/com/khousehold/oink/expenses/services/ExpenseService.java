@@ -27,7 +27,7 @@ public class ExpenseService {
   }
 
   public Flux<Expense> getExpenses(IFilter filter) {
-    return this.expenseRepository.findExpenses(filter);
+    return this.expenseRepository.find(filter);
   }
 
   public Mono<Boolean> deleteExpenseById(String expenseId) {

@@ -19,8 +19,8 @@ dependencies {
 
     implementation project(path: ':commons', configuration: 'default')
 
-    implementation group: 'org.springframework.boot', name: 'spring-boot-starter', version: springVersion
-    implementation group: 'org.springframework.boot', name: 'spring-boot-starter-data-mongodb-reactive', version: springVersion
+    implementation group: 'org.springframework.boot', name: 'spring-boot-starter', version: springBootVersion
+    implementation group: 'org.springframework.boot', name: 'spring-boot-starter-data-mongodb-reactive', version: springBootVersion
     compile group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: jacksonVersion
 
 

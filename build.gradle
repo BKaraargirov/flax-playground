@@ -13,7 +13,8 @@ allprojects {
 
     ext {
         // All dependency version
-        springVersion = '2.3.3.RELEASE'
+        springVersion = '2.3.9'
+        springBootVersion = '2.5.3'
         jacksonVersion = '2.11.2'
 
         // Kotlin related dependency versions
@@ -27,8 +28,3 @@ allprojects {
     }
 }
 
-
-
-dependencies {
-    testCompile group: 'junit', name: 'junit', version: '4.12'
-}

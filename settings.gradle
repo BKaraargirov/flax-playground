@@ -1,5 +1,5 @@
 rootProject.name = 'oink'
 
-include 'commons', 'commons-mongo', 'expenses'
+include 'commons', 'commons-mongo', 'expenses', 'ledger'
 include 'commons-spring'
 

@@ -22,7 +22,7 @@ dependencies {
 
     implementation project(path: ':commons', configuration: 'default')
 
-    implementation group: 'org.springframework.boot', name: 'spring-boot-starter-data-mongodb-reactive', version: springVersion
+    implementation group: 'org.springframework.boot', name: 'spring-boot-starter-data-mongodb-reactive', version: springBootVersion
 
 
     testImplementation group: 'io.kotest', name:'kotest-runner-junit5-jvm', version: kotestVersion
